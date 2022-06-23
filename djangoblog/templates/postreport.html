@@ -1,0 +1,53 @@
+{% extends "masterpage.html" %} {% load static %} {% block title %}
+<title>Profile Page</title>
+{% endblock %} {% block profile %}
+
+<div class="section-row">
+  <div class="post-author">
+    <div class="media">
+      <div class="media-left">
+        <img
+          class="media-object"
+          src="{{ authorinfo.profile_picture.url }}"
+          alt=""
+        />
+        <h3>{{ authorinfo.name.get_full_name }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block content %} {% if messages %}
+<div class="messages">
+  {% for message in messages %}
+  <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Sl No.</th>
+      <th scope="col">Title</th>
+      <th scope="col">Posted On</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in post %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ p.title }}</td>
+      <td>{{ p.postdate }}</td>
+      <td>
+        <a href="{% url 'updatepost' p.id %}">Edit</a> ||
+        <a href="{% url 'delete' p.id %}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

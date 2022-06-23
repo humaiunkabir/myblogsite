@@ -1,0 +1,23 @@
+{% extends "admin/base.html" %} {% block title %}{% if subtitle %}{{ subtitle }}
+| {% endif %}{{ title }} | Tech Blog {% endblock %} {% block extrastyle %}
+<style>
+    .login #header {
+        height: auto;
+        padding: 15px 16px;
+        justify-content: center;
+        background-color: green;
+    }
+
+    input[type="submit"],
+    button {
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: green;
+        width: 100%;
+    }
+</style>
+{% endblock %} {% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">Tech Blog</a>
+</h1>
+{% endblock %} {% block nav-global %}{% endblock %}

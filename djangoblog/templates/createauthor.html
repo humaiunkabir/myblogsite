@@ -1,0 +1,26 @@
+{% extends "masterpage.html" %} {% load static %} {% block title %}
+<title>New Author</title>
+{% endblock %} {% block content %}
+
+<div class="container-fluid">
+  <div style="font-size: 18px; color: green; padding-bottom: 30px">
+    <h3>Create Author</h3>
+  </div>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{form.as_p}}
+
+    <button
+      type="submit"
+      style="
+        background-color: green;
+        width: 150px;
+        border-radius: 10px;
+        color: white;
+      "
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
+{% endblock %}

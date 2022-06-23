@@ -1,0 +1,125 @@
+{% extends "masterpage.html" %} {% load static %} {% block title %}
+<title>Single Post Page</title>
+{% endblock %} {% block content %}
+
+<div id="post-header" class="page-header">
+  <div
+    class="background-img"
+    style="background-image: url({{post.image.url}})"
+  ></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="post-meta">
+          <a
+            class="post-category cat-{{ post.category.id }}"
+            href="{% url 'categorypost' id=post.category.id %}"
+            >{{post.category.name}}</a
+          >
+          <span class="post-date">{{post.postdate}}</span>
+        </div>
+        <h1>{{post.title}}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="row">
+      < class="col-md-12">
+        <div class="section-row sticky-container">
+          <div class="main-post">
+            <p>{{post.body}}</p>
+          </div>
+          <div class="post-shares sticky-shares">
+            <a href="#" class="share-facebook"
+              ><i class="fa fa-facebook"></i
+            ></a>
+            <a href="#" class="share-twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="share-google-plus"
+              ><i class="fa fa-google-plus"></i
+            ></a>
+            <a href="#" class="share-pinterest"
+              ><i class="fa fa-pinterest"></i
+            ></a>
+            <a href="#" class="share-linkedin"
+              ><i class="fa fa-linkedin"></i
+            ></a>
+            <a href="#"><i class="fa fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <div class="section-row text-center">
+          <a href="#" style="display: inline-block; margin: auto">
+            <img
+              class="img-responsive"
+              src="img/xad-2.jpg.pagespeed.ic.bUoDgOb5IT.jpg"
+              alt=""
+            />
+          </a>
+        </div>
+
+        <div class="section-row">
+          <div class="post-author">
+            <div class="media">
+              <div class="media-left">
+                <img
+                  class="media-object"
+                  src="{{ post.article_author.profile_picture.url }}"
+                  alt=""
+                />
+              </div>
+              <div class="media-body">
+                <div class="media-heading">
+                  <h3>{{ post.article_author.name.get_full_name }}</h3>
+                </div>
+                <p>{{ post.article_author.detals }}</p>
+                <ul class="author-social">
+                  <li>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        
+        <div  class="card">
+          <div class="card-header">Show Comments</div>
+          {% for comment in comments %}
+          <hr>
+          <div class="card-title">
+              <h4>{{ comment.name }}</h4>
+              <h5>{{ comment.email }}</h5>
+              <p>{{ comment.post_comment }}</p>
+              {% empty %}
+              <h3>Sorry This Post Has No Comment.</h3>
+          </div>      
+          {% endfor %}          
+          </div>
+        
+          <div class="card">
+          <div class="card-header">New Comment</div>
+          <div class="card-body">
+            <form action="" method="POST">
+              {% csrf_token %} {{ form.as_p}}
+              <button class="btn btn-success" style="width: 250px; height: 50px; font-size: 25px; margin-top: 20px;border-radius: 20px;">Submit Comment</button>
+            </form>
+          </div>
+        </div>
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>

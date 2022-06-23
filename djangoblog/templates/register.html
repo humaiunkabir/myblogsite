@@ -1,0 +1,230 @@
+{% extends "masterpage.html" %} {% load static %} {% block title %}
+<title>Login Page</title>
+{% endblock %} {% block content %}
+
+<style>
+  loginbody {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(255, 1, 1, 0.1);
+  }
+
+  .cardlogin {
+    border: 5px;
+    border-color: #000;
+    border-radius: 0;
+    width: 420px !important;
+    margin: 0 auto;
+  }
+
+  .signuplogin {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 10px 50px;
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+
+  h5 {
+    color: #ff0147;
+    margin-bottom: 3px;
+    font-weight: bold;
+  }
+
+  smalllogin {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  input {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+  }
+
+  .form-control-login {
+    border: 1px solid #dc354575;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.075);
+    letter-spacing: 1px;
+  }
+
+  .form-control-login:focus {
+    border: 0.5px solid #dc354575;
+    border-radius: 30px;
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.075);
+    color: #000;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+  }
+
+  .btn-login {
+    display: block;
+    width: 100%;
+    border-radius: 30px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: linear-gradient(
+      to right,
+      rgba(249, 0, 104, 1) 0%,
+      rgba(247, 117, 24, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+      left,
+      rgba(249, 0, 104, 1) 0%,
+      rgba(247, 117, 24, 1) 100%
+    );
+  }
+
+  .text-left-login {
+    color: rgba(0, 0, 0, 0.3);
+    font-weight: 400;
+  }
+
+  .text-right-login {
+    color: #ff0147;
+    font-weight: bold;
+  }
+
+  span.text-center-login {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  .fab-login {
+    padding: 15px;
+    font-size: 23px;
+  }
+
+  .fa-facebook-login {
+    color: #0303d9bf;
+  }
+
+  .fa-twitter-login {
+    color: #0078fade;
+  }
+
+  .fa-linkedin-login {
+    color: #18b1c0;
+  }
+</style>
+
+<center>
+  <div class="container">
+    {% if messages %}
+    <div class="messages" style="width: 380px">
+      {% for message in messages %}
+      <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="row">
+      <div class="col-md-3 mx-auto py-4 px-0"></div>
+      <div class="col-md-6 mx-auto py-4 px-0">
+        <div class="card p-0" style="border-radius: 20px">
+          <div
+            class="card-title text-center-login"
+            style="
+              border-top-left-radius: 20px;
+              border-top-right-radius: 20px;
+              color: white;
+            "
+          >
+            <h3 class="mt-5">Registration</h3>
+            <small class="para">Register By Using Proper Information.</small>
+          </div>
+          <form
+            class="signuplogin"
+            action="{% url 'registersubmit' %}"
+            method="POST"
+          >
+            {% csrf_token %}
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control-login"
+                placeholder="Enter First Name"
+                name="firstname"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control-login"
+                placeholder="Enter Last Name"
+                name="lastname"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control-login"
+                placeholder="Enter Email"
+                name="email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control-login"
+                placeholder="Enter User Name"
+                name="uname"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control-login"
+                placeholder="Enter Password"
+                name="psw"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control-login"
+                placeholder="Enter Confirm Password"
+                name="cpsw"
+                required
+              />
+            </div>
+            <button type="submit" class="btn-login btn-primary">
+              Sign Up Now
+            </button>
+            <div class="row">
+              <div class="col-6 col-sm-6">
+                <a href="{% url 'login' %}">
+                  <p class="text-right-login pt-2 mr-1">Login Using</p>
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="d-flex mx-auto pt-1 pb-3">
+                <a href="#"><i class="fab-login fa-facebook-login"></i></a>
+                <a href="#"><i class="fab-login fa-twitter-login"></i></a>
+                <a href="#"><i class="fab-login fa-linkedin-login"></i></a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-3 mx-auto py-4 px-0"></div>
+    </div>
+  </div>
+</center>
+
+{% endblock %}
