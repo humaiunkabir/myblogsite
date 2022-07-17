@@ -1,9 +1,4 @@
-import email
-from email.mime import image
-from msilib.schema import ODBCAttribute
 from sqlite3 import Timestamp
-from tkinter import CASCADE
-from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
@@ -40,10 +35,9 @@ class article(models.Model):
         return f'{self.title} => {self.category}'
 
 
-
 class comment(models.Model):
     post = models.ForeignKey(article, on_delete=models.CASCADE)
-    name =models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     email = models.EmailField(max_length=200)
     post_comment = models.TextField()
 
