@@ -125,7 +125,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = r'G:\HR_Venture_Python_Django_Training\ProjectAll\Django\myblogsite\djangoblog\media'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MESSAGE_TAGS = {
     messages.INFO: 'alert alert-info',
@@ -136,4 +136,4 @@ MESSAGE_TAGS = {
 }
 
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
