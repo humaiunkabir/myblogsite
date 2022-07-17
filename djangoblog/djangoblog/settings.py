@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from django.contrib.messages import constants as messages
 from pathlib import Path
+import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-o4eo9y7(^hcsm@jd*c(bj(m(sef(#brj+!+5v5k2(4-fm51+7)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,6 +135,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = r'G:\HR_Venture_Python_Django_Training\ProjectAll\Django\myblogsite\djangoblog\media'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 MESSAGE_TAGS = {
     messages.INFO: 'alert alert-info',
     messages.SUCCESS: 'alert alert-success',
@@ -139,3 +144,6 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert alert-error',
     messages.DEBUG: 'alert alert-info',
 }
+
+
+django_heroku.settings(locals())
