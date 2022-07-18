@@ -23,11 +23,11 @@ def home(request):
             post = post.filter(
                 Q(title__icontains=search) | Q(body__icontains=search)
             )
-        paginator = Paginator(post, 24)  # Show 25 contacts per page.
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
+        # paginator = Paginator(post, 24)  # Show 25 contacts per page.
+        # page_number = request.GET.get('page')
+        # page_obj = paginator.get_page(page_number)
         context = {
-            "post": page_obj
+            "post": ''
         }
         return render(request, 'index.html', context)
     else:
@@ -37,12 +37,12 @@ def home(request):
             post = post.filter(
                 Q(title__icontains=search) | Q(body__icontains=search)
             )
-        paginator = Paginator(post, 24)  # Show 25 contacts per page.
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
+        # paginator = Paginator(post, 24)  # Show 25 contacts per page.
+        # page_number = request.GET.get('page')
+        # page_obj = paginator.get_page(page_number)
 
         context = {
-            "post": page_obj
+            "post": post
         }
         return render(request, 'index.html', context)
 
@@ -85,11 +85,11 @@ def getCategoryWisePost(request, id):
             post = post.filter(
                 Q(title__icontains=search) | Q(body__icontains=search)
             )
-        paginator = Paginator(post, 24)  # Show 25 contacts per page.
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
+        # paginator = Paginator(post, 24)  # Show 25 contacts per page.
+        # page_number = request.GET.get('page')
+        # page_obj = paginator.get_page(page_number)
         context = {
-            "post": page_obj
+            "post": post
         }
         return render(request, 'categorywisepost.html', context)
 
@@ -100,11 +100,11 @@ def getCategoryWisePost(request, id):
             post = post.filter(
                 Q(title__icontains=search) | Q(body__icontains=search)
             )
-        paginator = Paginator(post, 24)  # Show 25 contacts per page.
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
+        # paginator = Paginator(post, 24)  # Show 25 contacts per page.
+        # page_number = request.GET.get('page')
+        # page_obj = paginator.get_page(page_number)
         context = {
-            "post": page_obj
+            "post": post
         }
         return render(request, 'categorywisepost.html', context)
 
@@ -120,11 +120,11 @@ def loginsubmit(request):
             post = post.filter(
                 Q(title__icontains=search) | Q(body__icontains=search)
             )
-        paginator = Paginator(post, 24)  # Show 25 contacts per page.
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
+        # paginator = Paginator(post, 24)  # Show 25 contacts per page.
+        # page_number = request.GET.get('page')
+        # page_obj = paginator.get_page(page_number)
         context = {
-            "post": page_obj
+            "post": post
         }
         return render(request, 'index.html', context)
     else:
@@ -144,11 +144,11 @@ def loginsubmit(request):
                     post = post.filter(
                         Q(title__icontains=search) | Q(body__icontains=search)
                     )
-                paginator = Paginator(post, 24)  # Show 25 contacts per page.
-                page_number = request.GET.get('page')
-                page_obj = paginator.get_page(page_number)
+                # paginator = Paginator(post, 24)  # Show 25 contacts per page.
+                # page_number = request.GET.get('page')
+                # page_obj = paginator.get_page(page_number)
                 context = {
-                    "post": page_obj
+                    "post": post
                 }
                 return render(request, 'index.html', context)
             else:
