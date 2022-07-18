@@ -23,7 +23,7 @@ def home(request):
             post = post.filter(
                 Q(title__icontains=search) | Q(body__icontains=search)
             )
-        paginator = Paginator(post, 6)  # Show 25 contacts per page.
+        paginator = Paginator(post, 24)  # Show 25 contacts per page.
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         context = {
@@ -37,7 +37,7 @@ def home(request):
             post = post.filter(
                 Q(title__icontains=search) | Q(body__icontains=search)
             )
-        paginator = Paginator(post, 6)  # Show 25 contacts per page.
+        paginator = Paginator(post, 24)  # Show 25 contacts per page.
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
@@ -85,7 +85,7 @@ def getCategoryWisePost(request, id):
             post = post.filter(
                 Q(title__icontains=search) | Q(body__icontains=search)
             )
-        paginator = Paginator(post, 6)  # Show 25 contacts per page.
+        paginator = Paginator(post, 24)  # Show 25 contacts per page.
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         context = {
@@ -100,7 +100,7 @@ def getCategoryWisePost(request, id):
             post = post.filter(
                 Q(title__icontains=search) | Q(body__icontains=search)
             )
-        paginator = Paginator(post, 6)  # Show 25 contacts per page.
+        paginator = Paginator(post, 24)  # Show 25 contacts per page.
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         context = {
@@ -120,7 +120,7 @@ def loginsubmit(request):
             post = post.filter(
                 Q(title__icontains=search) | Q(body__icontains=search)
             )
-        paginator = Paginator(post, 6)  # Show 25 contacts per page.
+        paginator = Paginator(post, 24)  # Show 25 contacts per page.
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         context = {
@@ -144,7 +144,7 @@ def loginsubmit(request):
                     post = post.filter(
                         Q(title__icontains=search) | Q(body__icontains=search)
                     )
-                paginator = Paginator(post, 6)  # Show 25 contacts per page.
+                paginator = Paginator(post, 24)  # Show 25 contacts per page.
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 context = {
