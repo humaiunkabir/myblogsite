@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 class author(models.Model):
     DEFAULT = 'defaultuser.png'
+    id = models.IntegerField(primary_key=True, auto_created=True)
     name = models.ForeignKey(User, on_delete=models.CASCADE)
     profile_picture = models.FileField(default=DEFAULT)
     detals = models.TextField()
@@ -15,6 +16,7 @@ class author(models.Model):
 
 
 class category(models.Model):
+    id = models.IntegerField(primary_key=True, auto_created=True)
     name = models.CharField(max_length=100)
     catcolor = models.CharField(max_length=100, default='red')
 
@@ -24,6 +26,7 @@ class category(models.Model):
 
 class article(models.Model):
     DEFAULT = 'default.jpg'
+    id = models.IntegerField(primary_key=True, auto_created=True)
     article_author = models.ForeignKey(author, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     body = models.TextField()
@@ -36,6 +39,7 @@ class article(models.Model):
 
 
 class comment(models.Model):
+    id = models.IntegerField(primary_key=True, auto_created=True)
     post = models.ForeignKey(article, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=200)
