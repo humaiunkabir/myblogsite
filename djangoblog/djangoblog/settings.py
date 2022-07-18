@@ -1,6 +1,5 @@
 
 
-from tkinter.tix import Tree
 from django.contrib.messages import constants as messages
 from pathlib import Path
 import django_heroku
